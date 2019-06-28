@@ -31,11 +31,11 @@ class CreateAlbumsTable extends Migration
 
                 $table->unsignedSmallInteger('number_of_tracks')->nullable();
 
-                $table->string('label', 255);
+                $table->string('label', 255)->nullable();
 
                 $table->string('producer', 255)->nullable();
 
-                $table->string('genre', 255);
+                $table->string('genre', 255)->nullable();
 
                 $table->timestamps();
             });
