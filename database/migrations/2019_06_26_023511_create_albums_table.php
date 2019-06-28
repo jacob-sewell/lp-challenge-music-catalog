@@ -15,11 +15,11 @@ class CreateAlbumsTable extends Migration
     {
         try {
             Schema::create('albums', function (Blueprint $table) {
-                $table->bigIncrements('album_id');
+                $table->bigIncrements('id');
 
                 $table->unsignedBigInteger('band_id');
                 $table->foreign('band_id')
-                    ->references('band_id')
+                    ->references('id')
                     ->on('bands')
                     ->onDelete('cascade');
 

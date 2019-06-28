@@ -15,7 +15,7 @@ class CreateBandsTable extends Migration
     {
         try {
             Schema::create('bands', function (Blueprint $table) {
-                $table->bigIncrements('band_id');
+                $table->bigIncrements('id');
 
                 $table->string('name', 255);
 
