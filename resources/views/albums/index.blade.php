@@ -8,6 +8,28 @@
 <div class="links">
     <a href="{{ route('albums.create') }}" class="btn btn-primary">New Album</a>
     <a href="{{ route('bands.index') }}" class="btn btn-info">Bands Listing</a>
+    <span class="bandchooser">
+        <a id="band-filter-btn" href="#" class="btn btn-secondary">
+            Filter By Band:&nbsp;
+            <select name="band_id">
+                @foreach ($all_bands as $band)
+                    <option value="{{ $band->id }}" {{ $band->id == $band_id ? 'selected="selected"' : '' }} data-link="{{ route('albums.byband', ['band_id' => $band->id]) }}">{{ $band->name }}</option>
+                @endforeach
+            </select>
+        </a>
+        <script type="text/javascript">
+            var bandChooser = document.querySelectorAll(".bandchooser select[name=band_id]")[0];
+            bandChooser.addEventListener(
+                "change",
+                function() {
+                    var url = "#";
+                    var selectedBand = bandChooser[bandChooser.selectedIndex];
+                    if (selectedBand && selectedBand.getAttribute("data-link")) url = selectedBand.getAttribute("data-link");
+                    document.getElementById("band-filter-btn").setAttribute("href", url);
+                }
+            );
+        </script>
+    </span>
 </div>
 </div>
 @endsection
