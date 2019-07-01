@@ -15,6 +15,6 @@ $factory->define(Album::class, function (Faker $faker) {
         'number_of_tracks' => $faker->numberBetween(0, 20),
         'label'            => $faker->company.' '.$faker->companySuffix,
         'producer'         => $faker->name,
-        'genre'            => $faker->word,
+        'genre'            => $faker->word.$faker->randomElement(['','-core','-gaze','-pop','-funk','-country']),
     ];
 });
