@@ -12,5 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('bands');
 });
+
+Route::resource('bands', 'BandController');
+Route::get('bands/{sortfield}/{sortdir?}', 'BandController@sortedindex')->name('bands.sortedindex');
+
+Route::resource('albums', 'AlbumController');
+Route::get('albums/byband/{band_id}/{sortfield?}/{sortdir?}', 'AlbumController@byband')->name('albums.byband');
+Route::get('albums/{sortfield}/{sortdir?}', 'AlbumController@sortedindex')->name('albums.sortedindex');
