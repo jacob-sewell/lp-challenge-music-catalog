@@ -1,4 +1,4 @@
-@extends('albums.base')
+@extends('base')
 
 @section('header')
 <div class="row">
@@ -38,7 +38,11 @@
 
           <div class="form-group">
               <label for="band_id">Band:*</label>
-              @yield('bandchooser')
+              <select name="band_id">
+                @foreach ($all_bands as $band)
+                    <option {{ $album && $album->band()->first()->id == $band->id ? 'selected="selected"' : '' }} value="{{ $band->id }}">{{ $band->name }}</option>
+                @endforeach
+              </select>
           </div>
 
           <div class="form-group">

@@ -1,4 +1,4 @@
-@extends('albums.base')
+@extends('base')
 
 @section('header')
 <div class="row">
